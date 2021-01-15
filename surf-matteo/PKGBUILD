@@ -1,0 +1,35 @@
+# Maintainer: Salonia Matteo <saloniamatteo@protonmail.com> 
+# Salonia Matteo's build of surf, based on Luke Smith's
+
+pkgname=surf-luke-git
+pkgver=2.0
+pkgrel=1
+pkgdesc="Salonia Matteo's build of the surf web browser, based on Luke Smith's"
+arch=('any')
+url="https://github.com/LukeSmithxyz/surf"
+license=('MIT')
+depends=('dmenu' 'gtk3' 'gcr' 'webkit2gtk')
+optdepends=('mpv' 'youtube-dl')
+makedepends=('git')
+conflicts=("surf")
+source=(
+	"git+https://github.com/LukeSmithxyz/surf" # repository
+	"surf-matteo.patch" # patch
+)
+sha256sums=(
+	"SKIP" # repository
+	"43112f227790670a38e686cbbfced15d3ca3371f304de5189a0698d9a7c0e851" # patch
+)
+
+prepare() {
+
+	# patch config.h
+	cd "${srcdir}/surf"
+	patch < "${srcdir}/surf-matteo.patch"
+
+}
+
+package() {
+	cd "${srcdir}/surf"
+	sudo make clean install
+}

@@ -1,0 +1,88 @@
+--- a/config.h
++++ b/config.h
+@@ -10,15 +10,16 @@ static char *cookiefile     = "~/.config/surf/cookies.txt";
+ static char *searchengine = "https://duckduckgo.com/?q=";
+ 
+ static SearchEngine searchengines[] = {
+-	{ "lib",	"http://gen.lib.rus.ec/search.php?req=%s&lg_topic=libgen&open=0&view=simple&res=25&phrase=0&column=def"   },
++	{ "aur",	"https://aur.archlinux.org/packages/?K=%s" },
+ 	{ "aw",		"https://wiki.archlinux.org/index.php?search=%s&title=Special%3ASearch" },
+-	{ "vw",		"https://wiki.voidlinux.org/index.php?search=%s&title=Special%3ASearch&go=Go" },
++	{ "book",	"http://libgen.rs/search.php?req=%s&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def" },
++	{ "ddg",	"https://duckduckgo.com/?q=%s" },
++	{ "img",	"https://duckduckgo.com/?q=%s&atb=v1-1&t=h_&iar=images" },
+ 	{ "osm",	"https://www.openstreetmap.org/search?query=%s" },
+-	{ "i",		"https://duckduckgo.com/?q=%s&atb=v1-1&t=h_&iar=images" },
+-	{ "tpb",	"https://pirateproxy.app/s/?q=%s&=on&page=0&orderby=99" },
+-	{ "eb",		"https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw=%s&_sacat=0" },
+-	{ "wt",		"https://www.wiktionary.org/search-redirect.php?family=wiktionary&language=en&search=%s&go=Go" },
+-	{ "w",		"https://www.wikipedia.org/search-redirect.php?family=wikipedia&language=en&search=%s&language=en&go=Go" },
++	{ "search",	"https://duckduckgo.com/?q=%s" },
++	{ "time",	"https://time.is/%s" },
++	{ "tpb",	"https://www.pirate-bay.net/search?q=%s" },
++	{ "w",		"https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go&ns0=1" },
+ 	{ "yt",		"https://www.youtube.com/results?search_query=%s" },
+ };
+ 
+@@ -92,11 +93,27 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
+         } \
+ }
+ 
++/* cURL options:
++ *  -#	-> display progress bar
++ *  -A	-> set user agent
++ *  -J	-> get the specified server filename
++ *  -L	-> follow HTTP 3XX locations
++ *  -O	-> save file using the specified server filename
++ *  -Z	-> parallel download
++ *  -b	-> pass cookie data to server
++ *  -c	-> "cookie jar" (file) to use
++ *  -e	-> set HTTP referer
++ *  -g	-> disable URL globbing parsing
++ */
+ /* DOWNLOAD(URI, referer) */
+ #define DOWNLOAD(u, r) { \
+         .v = (const char *[]){ "st", "-e", "/bin/sh", "-c",\
+-             "curl -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
+-             " -e \"$3\" \"$4\"; read", \
++             "mkdir -p ~/Downloads; cd ~/Downloads; "  \
++             "echo Downloading \"$4\"...; "  \
++             "curl -# -Z -g -L -J -O -A \"$1\" -b \"$2\" -c \"$2\"" \
++             " -e \"$3\" \"$4\"; " \
++	     "echo Downloaded \"$4\", press the '[ENTER]' key to quit...; " \
++	     "read", \
+              "surf-download", useragent, cookiefile, r, u, NULL \
+         } \
+ }
+@@ -132,8 +149,8 @@ static WebKitFindOptions findopts = WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE |
+  * the list.
+  */
+ static SiteSpecific styles[] = {
+-	/* regexp               file in $styledir */
+-	{ ".*",                 "default.css" },
++	/* regexp			file in $styledir */
++	{ ".*",				"default.css" },
+ };
+ 
+ /* certificates */
+@@ -182,7 +199,7 @@ static Key keys[] = {
+ 	{ 0|GDK_SHIFT_MASK,	GDK_KEY_k,	zoom,       { .i = +1 } },
+ 	{ 0|GDK_SHIFT_MASK,	GDK_KEY_q,	zoom,       { .i = 0  } },
+ 	{ 0,			GDK_KEY_minus,	zoom,       { .i = -1 } },
+-	{ 0|GDK_SHIFT_MASK,	GDK_KEY_plus,	zoom,       { .i = +1 } },
++	{ 0,			GDK_KEY_plus,	zoom,       { .i = +1 } },
+ 	{ 0,			GDK_KEY_equal,	zoom,       { .i = 0  } },
+ 
+ 	{ 0,			GDK_KEY_p,	clipboard,  { .i = 1 } },
+
+--- a/surf.c
++++ b/surf.c
+@@ -2153,7 +2153,7 @@ main(int argc, char *argv[])
+ 	if (argc > 0)
+ 		arg.v = argv[0];
+ 	else
+-		arg.v = "about:blank";
++		arg.v = "https://start.duckduckgo.com";
+ 
+ 	setup();
+ 	c = newclient(NULL);
