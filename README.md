@@ -5,6 +5,6 @@
 For more PKGBUILDs, visit [my website](https://godzm4tt3o.js.org/aur.html).
 
 Currently available PKGBUILDs:
-	- [x] St
-	- [x] Surf
-	- [ ] Custom Linux-Ck (see [about.html](https://godzm4tt3o.js.org/about.html#kconfig))
+- [x] St
+- [x] Surf
+- [ ] Custom Linux-Ck (see [about.html](https://godzm4tt3o.js.org/about.html#kconfig))
