@@ -1,0 +1,53 @@
+# Maintainer: Salonia Matteo <saloniamatteo@protonmail.com>
+
+pkgname=st-matteo
+_pkgname=st-luke
+pkgver=0.8.2.r1166.13b3c63
+pkgrel=1
+pkgdesc='Simple virtual terminal emulator for X'
+url='https://github.com/LukeSmithxyz/st.git'
+arch=('i686' 'x86_64')
+license=('MIT')
+options=('zipman')
+depends=('libxft')
+makedepends=('ncurses' 'libxext' 'git')
+
+# include config.h and any patches you want to have applied here
+source=(
+	"${_pkgname}::git+$url" # git repo
+	"st-matteo.patch" # patch
+)
+sha256sums=(
+	'SKIP' # git repo
+	'1c67de735ec39bf8348cf59c9d46fbd5ab24b942263b35345261a0c5e62af4b9' # patch
+)
+
+provides=('st')
+conflicts=('st')
+
+pkgver() {
+  cd "${_pkgname}"
+  _pkgver=$(awk '/VERSION/ {print $3}' config.mk|head -1)
+  echo "${_pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${_pkgname}"
+  # skip terminfo which conflicts with ncurses
+  sed -i '/tic /d' Makefile
+
+  # apply patch
+  patch < "${srcdir}"/"st-matteo.patch"
+}
+
+build() {
+  cd "${_pkgname}"
+  make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+  cd "${_pkgname}"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}

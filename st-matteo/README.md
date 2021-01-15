@@ -1,0 +1,14 @@
+## st-matteo
+
+This st build is based off of [Luke Smith's st build](https://github.com/LukeSmithxyz/st). I have applied my own patch.
+
++ Patch features:
+	- Added `ALTKE`Y;
+	- Bell Volume increased to 100;
+	- Change alpha with <kbd>Super</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>/<kbd>S</kbd>;
+	- Copy with <kbd>Alt</kbd>+<kbd>C</kbd>, Paste with <kbd>Alt</kbd>+<kbd>V</kbd>;
+	- `CopyOutput` now uses <kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>O</kbd>;
+	- `CopyUrlCmd` now uses <kbd>Alt</kbd>+<kbd>Ctrl</kbd>+<kbd>Y</kbd>;
+	- `MODKEY` changed to <kbd>Super</kbd>;
+	- Modified `TERMMOD` to <kbd>Super</kbd>+<kbd>Shift</kbd>;
+	- `OpenUrlCmd` now uses <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>.
