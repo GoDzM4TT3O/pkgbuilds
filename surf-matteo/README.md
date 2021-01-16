@@ -1,4 +1,4 @@
-## st-matteo
+## surf-matteo
 
 This surf build is based off of [Luke Smith's surf build](https://github.com/LukeSmithxyz/surf). I have applied my own patch.
 
