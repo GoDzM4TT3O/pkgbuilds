@@ -1,7 +1,7 @@
 # Maintainer: Salonia Matteo <saloniamatteo@protonmail.com> 
 # Salonia Matteo's build of surf, based on Luke Smith's
 
-pkgname=surf-luke-git
+pkgname=surf-matteo
 pkgver=2.0
 pkgrel=1
 pkgdesc="Salonia Matteo's build of the surf web browser, based on Luke Smith's"
