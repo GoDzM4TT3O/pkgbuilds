@@ -7,6 +7,9 @@ Modify the PKGBUILD and the config file to suit your needs.
 
 If you want to modify which patches/modifications are being applied, modify `tune-config`.
 
+On my laptop, the latest 5.10.8 Kernel (+ CK patchset + my own optimizations) gets compiled & installed in about 14 minutes!
+(Obviously already having the sources downloaded, because connection speed may vary)
+
 + Patch features:
 	- Disabled AMD & nVidia graphic drivers;
 	- Disabled NUMA;
