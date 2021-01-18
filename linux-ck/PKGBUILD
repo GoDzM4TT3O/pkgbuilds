@@ -99,7 +99,7 @@ b2sums=(
         # Kernel source signature
         'SKIP'
         # Kernel configuration
-        '113cdcd8abb2f428e33e15e8f8812b1cfd73949b3458df034a362515e2bb067563e579d803a88093807102f080d76d73e7b35485ae2abfece68e08772b1afbe4'
+        'f497febf1d8851323b2587d2112413f643f4dd4e367fadc72d3d4aa3e9a654efad539b2cdbd75e3196b6877c3898bf9f4d6ebe927ed1c777c3822d5188f84f94'
         # Enable additional CPU optimizations patch
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         # CK patchset
@@ -113,7 +113,7 @@ b2sums=(
         # modprobed.db (module database)
         '5abf112aadde47d78d0a3357d46fd0d5311539b98caa83d3db45d5c4a30695d580e9afce7917ec4ad68db3c7cce6ab25bfb4dff5c2200655d379b3ae33d6bf88'
         # configuration modifier (apply custom optimizations)
-        'ad8fd7b4a49bde674291f89a329d9aa5362bee55f21be91bcce8234ea85f049ee8102633176f313d2407ca5f01af6a2248a91a74643eadec8736d2e511ceb006'
+        'a64c5bf94808cacf23ff6a4c16ba460b0f64034a1270f53de37b9889ace4731e509e9c5b2dff36040daa199a8ff70e22498166cf18efe828418b01783fa19194'
 )
 
 export KBUILD_BUILD_HOST=archlinux

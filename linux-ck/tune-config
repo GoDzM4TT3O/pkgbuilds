@@ -2,6 +2,8 @@
 # This script modifies ".config".
 
 # set kernel compression to LZ4
+#-- disable others
+scripts/config --disable CONFIG_CRYPTO_ZSTD
 scripts/config --disable CONFIG_HAVE_KERNEL_BZIP2
 scripts/config --disable CONFIG_HAVE_KERNEL_GZIP
 scripts/config --disable CONFIG_HAVE_KERNEL_LZMA
@@ -14,8 +16,29 @@ scripts/config --disable CONFIG_KERNEL_LZMA
 scripts/config --disable CONFIG_KERNEL_LZO
 scripts/config --disable CONFIG_KERNEL_XZ
 scripts/config --disable CONFIG_KERNEL_ZSTD
-scripts/config --enable CONFIG_KERNEL_LZ4
+scripts/config --disable CONFIG_PSTORE_842_COMPRESS
+scripts/config --disable CONFIG_PSTORE_LZ4HC_COMPRESS
+scripts/config --disable CONFIG_PSTORE_LZO_COMPRESS
+scripts/config --disable CONFIG_PSTORE_ZSTD_COMPRESS
+scripts/config --disable CONFIG_PSTORE_ZSTD_COMPRESS
+scripts/config --disable CONFIG_PSTORE_ZSTD_COMPRESS_DEFAULT
+scripts/config --disable CONFIG_RD_BZIP2
+scripts/config --disable CONFIG_RD_GZIP
+scripts/config --disable CONFIG_RD_LZMA
+scripts/config --disable CONFIG_RD_LZO
+scripts/config --disable CONFIG_RD_XZ
+scripts/config --disable CONFIG_RD_ZSTD
+scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_842
+scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO
+scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+#-- enable lz4
 scripts/config --enable CONFIG_HAVE_KERNEL_LZ4
+scripts/config --enable CONFIG_KERNEL_LZ4
+scripts/config --enable CONFIG_PSTORE_LZ4_COMPRESS
+scripts/config --enable CONFIG_RD_LZ4
+scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
+scripts/config --set-str CONFIG_PSTORE_COMPRESS_DEFAULT "lz4"
+scripts/config --set-str CONFIG_ZSWAP_COMPRESSOR_DEFAULT "lz4"
 
 # disable everything applel
 scripts/config --disable CONFIG_APPLE_GMUX
@@ -239,3 +262,38 @@ scripts/config --set-val CONFIG_NR_CPUS_DEFAULT 8
 # disable FireWire (who uses firewire?)
 scripts/config --disable CONFIG_FIREWIRE
 scripts/config --disable CONFIG_FIREWIRE_NOSY
+
+# disable soydev filesystems
+scripts/config --disable CONFIG_ADFS_FS 
+scripts/config --disable CONFIG_AFFS_FS 
+scripts/config --disable CONFIG_BEFS_FS 
+scripts/config --disable CONFIG_BFS_FS 
+scripts/config --disable CONFIG_BTRFS_FS
+scripts/config --disable CONFIG_CRAMFS 
+scripts/config --disable CONFIG_ECRYPT_FS 
+scripts/config --disable CONFIG_EFS_FS 
+scripts/config --disable CONFIG_EXFAT_FS
+scripts/config --disable CONFIG_EXT2_FS
+scripts/config --disable CONFIG_EXT3_FS
+scripts/config --disable CONFIG_F2FS_FS
+scripts/config --disable CONFIG_GFS2_FS
+scripts/config --disable CONFIG_HFSPLUS_FS 
+scripts/config --disable CONFIG_HFS_FS 
+scripts/config --disable CONFIG_HPFS_FS 
+scripts/config --disable CONFIG_JFS_FS
+scripts/config --disable CONFIG_MINIX_FS 
+scripts/config --disable CONFIG_NILFS2_FS
+scripts/config --disable CONFIG_NTFS_FS
+scripts/config --disable CONFIG_OCFS2_FS
+scripts/config --disable CONFIG_OMFS_FS 
+scripts/config --disable CONFIG_ORANGEFS_FS 
+scripts/config --disable CONFIG_QNX4FS_FS 
+scripts/config --disable CONFIG_QNX6FS_FS 
+scripts/config --disable CONFIG_REISERFS_FS
+scripts/config --disable CONFIG_ROMFS_FS 
+scripts/config --disable CONFIG_SQUASHFS 
+scripts/config --disable CONFIG_VXFS_FS 
+scripts/config --disable CONFIG_XFS_FS
+scripts/config --disable CONFIG_ZONEFS_FS
+
+# use lz4 compression instead of zstd
