@@ -2,7 +2,10 @@
 
 This custom linux-ck build is based off of the [linux-ck PKGBUILD on the AUR](https://aur.archlinux.org/packages/linux-ck).
 It contains several speed optimizations, targeted towards Intel CPUs (I use a ThinkPad T440p).
+
 Modify the PKGBUILD and the config file to suit your needs.
+
+If you want to modify which patches/modifications are being applied, modify `tune-config`.
 
 + Patch features:
 	- Disabled AMD & nVidia graphic drivers;

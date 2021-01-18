@@ -1,112 +1,115 @@
---- a/PKGBUILD	2021-01-18 08:23:20.176667797 +0100
-+++ b/PKGBUILD	2021-01-18 15:56:01.690000882 +0100
-@@ -1,5 +1,6 @@
+--- PKGBUILD	2021-01-18 16:16:11.470007609 +0100
++++ /home/matteo/Documents/aur/linux-ck-upstream/PKGBUILD	2021-01-18 08:23:20.176667797 +0100
+@@ -1,6 +1,5 @@
  # Maintainer: graysky <graysky AT archlinux DOT us>
  # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-+# Modified by Salonia Matteo <saloniamatteo@protonmail.com>
+-# Modified by Salonia Matteo <saloniamatteo@protonmail.com>
  
  ### BUILD OPTIONS
  # Set these variables to ANYTHING that is not null to enable them
-@@ -49,7 +50,8 @@
+@@ -50,8 +49,7 @@
  #  32. Generic-x86-64 (GENERIC_CPU)
  #  33. Native optimizations autodetected by GCC (MNATIVE)
  
--_subarch=
-+# Haswell
-+_subarch=23
+-# Haswell
+-_subarch=23
++_subarch=
  
  # Compile ONLY used modules to VASTLYreduce the number of modules built
  # and the build time.
-@@ -59,7 +61,7 @@
+@@ -61,7 +59,7 @@
  # This PKGBUILD read the database kept if it exists
  #
  # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
--_localmodcfg=
-+#_localmodcfg=
+-#_localmodcfg=
++_localmodcfg=
  
  ### IMPORTANT: Do no edit below this line unless you know what you're doing
  
-@@ -84,19 +86,32 @@
+@@ -86,35 +84,19 @@
    0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
    0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
    0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-+  "modprobed.db"
+-  "modprobed.db"
+-  "tune-config"
  )
  validpgpkeys=(
    'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
    '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
  )
--b2sums=('1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
-+b2sums=(
-+        # Kernel source (.tar.xz)
-+        '1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
-+        # Kernel source signature
+-b2sums=(
+-        # Kernel source (.tar.xz)
+-        '1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
+-        # Kernel source signature
++b2sums=('1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
          'SKIP'
--        '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
-+        # Kernel configuration
-+        '83bd5bdbd949acf86b57e45917bd4fec592b6231018098f0eb864834fbe68901ccf43897eca05fcbb3d93e602252e23081c8976cb9ee610b12e460c64b04170f'
-+        # Enable additional CPU optimizations patch
+-        # Kernel configuration
+-        '113cdcd8abb2f428e33e15e8f8812b1cfd73949b3458df034a362515e2bb067563e579d803a88093807102f080d76d73e7b35485ae2abfece68e08772b1afbe4'
+-        # Enable additional CPU optimizations patch
++        '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
          '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-+        # CK patchset
+-        # CK patchset
          '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
-+        # 0001-Zen-Add-sysctl[...] patch
+-        # 0001-Zen-Add-sysctl[...] patch
          'b42730a806a63dbf905f448a3282dec72a950ef7d16a3531d977dcae3b5c2685a5c5dd10a58e345d57084a6212353dc2f2f0102021d13c1557092e564f81eaf5'
-+        # 0002-HID-quirks-Add-Apple[...] patch
+-        # 0002-HID-quirks-Add-Apple[...] patch
          'a5dea5bb6df6fb517009ad5b104c2ea8e93ed880393a1412ca2d7fc8047abccc9c72076e40d1d4133cadc9048040846cc9bdc91e30c4d601ad5963d13498503e'
--        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a')
-+        # 0003-iwlwifi-Fix-regression[...] patch
-+        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
-+        # modprobed.db (module database)
-+        '5abf112aadde47d78d0a3357d46fd0d5311539b98caa83d3db45d5c4a30695d580e9afce7917ec4ad68db3c7cce6ab25bfb4dff5c2200655d379b3ae33d6bf88'
-+)
+-        # 0003-iwlwifi-Fix-regression[...] patch
+-        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
+-        # modprobed.db (module database)
+-        '5abf112aadde47d78d0a3357d46fd0d5311539b98caa83d3db45d5c4a30695d580e9afce7917ec4ad68db3c7cce6ab25bfb4dff5c2200655d379b3ae33d6bf88'
+-        # configuration modifier (apply custom optimizations)
+-        'ad8fd7b4a49bde674291f89a329d9aa5362bee55f21be91bcce8234ea85f049ee8102633176f313d2407ca5f01af6a2248a91a74643eadec8736d2e511ceb006'
+-)
++        '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a')
  
  export KBUILD_BUILD_HOST=archlinux
  export KBUILD_BUILD_USER=$pkgbase
-@@ -144,6 +159,9 @@
+@@ -162,9 +144,6 @@
    # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
    scripts/config --disable CONFIG_KVM_WERROR
  
-+  # apply optimizations
-+  ../tune-config
-+
+-  # apply optimizations
+-  ../tune-config
+-
    # fix naming schema in EXTRAVERSION of ck patch set
    sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
  
-@@ -168,17 +186,18 @@
+@@ -189,18 +168,17 @@
      make oldconfig
    fi
  
--  ### Optionally load needed modules for the make localmodconfig
-+  ### Load needed modules for the make localmodconfig
+-  ### Load needed modules for the make localmodconfig
++  ### Optionally load needed modules for the make localmodconfig
    # See https://aur.archlinux.org/packages/modprobed-db
--    if [ -n "$_localmodcfg" ]; then
--      if [ -f $HOME/.config/modprobed.db ]; then
--        echo "Running Steven Rostedt's make localmodconfig now"
--        make LSMOD=$HOME/.config/modprobed.db localmodconfig
--      else
--        echo "No modprobed.db data found"
--        exit
--      fi
--    fi
-+  echo "Running Steven Rostedt's make localmodconfig now"
-+
-+  if [ -f "$HOME/.config/modprobed.db" ]; then
-+    echo "Using modprobed.db in $HOME/.config! "
-+    make LSMOD="$HOME/.config/modprobed.db" localmodconfig
-+  else if [ -f "${srcdir}"/"modprobed.db" ]; then
-+    echo "Using modprobed.db in ${pkgdir}! "
-+    make LSMOD="${srcdir}/modprobed.db" localmodconfig
-+  fi
-+  fi
+-  echo "Running Steven Rostedt's make localmodconfig now"
+-
+-  if [ -f "$HOME/.config/modprobed.db" ]; then
+-    echo "Using modprobed.db in $HOME/.config! "
+-    make LSMOD="$HOME/.config/modprobed.db" localmodconfig
+-  else if [ -f "${srcdir}"/"modprobed.db" ]; then
+-    echo "Using modprobed.db in ${pkgdir}! "
+-    make LSMOD="${srcdir}/modprobed.db" localmodconfig
+-  fi
+-  fi
++    if [ -n "$_localmodcfg" ]; then
++      if [ -f $HOME/.config/modprobed.db ]; then
++        echo "Running Steven Rostedt's make localmodconfig now"
++        make LSMOD=$HOME/.config/modprobed.db localmodconfig
++      else
++        echo "No modprobed.db data found"
++        exit
++      fi
++    fi
  
    make -s kernelrelease > version
    echo "Prepared $pkgbase version $(<version)"
-@@ -194,7 +213,7 @@
+@@ -216,7 +194,7 @@
  
  build() {
    cd linux-${pkgver}
--  make all
-+  make all -j$(nproc)
+-  make all -j$(nproc)
++  make all
  }
  
  _package() {
