@@ -143,8 +143,10 @@ scripts/config --disable CONFIG_NET_VENDOR_HUAWEI
 scripts/config --disable CONFIG_USB_NET_HUAWEI_CDC_NCM
 scripts/config --disable CONFIG_XIAOMI_WMI
 
-# disable other unused stuff (broadcom, fujitsu, centaur,
-# hygon, marvell, mediatek, qualcomm, rockchip, sifive, zhaoxin)
+# disable other unused stuff (atheros, atmel, broadcom, cisco,
+# fujitsu, centaur, hygon, marvell, mediatek, qualcomm, rockchip,
+# sifive, zhaoxin)
+scripts/config --disable CONFIG_ATH5K_PCI
 scripts/config --disable CONFIG_BROADCOM_PHY
 scripts/config --disable CONFIG_CPU_SUP_CENTAUR
 scripts/config --disable CONFIG_CPU_SUP_HYGON
@@ -154,7 +156,9 @@ scripts/config --disable CONFIG_FUJITSU_LAPTOP
 scripts/config --disable CONFIG_FUJITSU_TABLET
 scripts/config --disable CONFIG_MARVELL_10G_PHY
 scripts/config --disable CONFIG_MARVELL_PHY
+scripts/config --disable CONFIG_NET_VENDOR_ATHEROS
 scripts/config --disable CONFIG_NET_VENDOR_BROADCOM
+scripts/config --disable CONFIG_NET_VENDOR_CISCO
 scripts/config --disable CONFIG_NET_VENDOR_FUJITSU
 scripts/config --disable CONFIG_NET_VENDOR_MARVELL
 scripts/config --disable CONFIG_NET_VENDOR_QUALCOMM
@@ -164,7 +168,11 @@ scripts/config --disable CONFIG_ROCKCHIP_PHY
 scripts/config --disable CONFIG_SPI_ROCKCHIP
 scripts/config --disable CONFIG_SPI_SIFIVE
 scripts/config --disable CONFIG_USB_SERIAL_QUALCOMM
+scripts/config --disable CONFIG_WLAN_VENDOR_ADMTEK
+scripts/config --disable CONFIG_WLAN_VENDOR_ATH
+scripts/config --disable CONFIG_WLAN_VENDOR_ATMEL
 scripts/config --disable CONFIG_WLAN_VENDOR_BROADCOM
+scripts/config --disable CONFIG_WLAN_VENDOR_CISCO
 scripts/config --disable CONFIG_WLAN_VENDOR_MARVELL
 scripts/config --disable CONFIG_WLAN_VENDOR_MEDIATEK
 
@@ -296,4 +304,9 @@ scripts/config --disable CONFIG_VXFS_FS
 scripts/config --disable CONFIG_XFS_FS
 scripts/config --disable CONFIG_ZONEFS_FS
 
-# use lz4 compression instead of zstd
+# disable nvme
+scripts/config --disable CONFIG_BLK_DEV_NVME
+scripts/config --disable CONFIG_NVME_CORE
+scripts/config --disable CONFIG_NVME_HWMON
+scripts/config --disable CONFIG_NVME_MULTIPATH
+
