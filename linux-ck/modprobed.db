@@ -65,7 +65,6 @@ libps2
 loop
 lpc_ich
 mac80211
-mac_hid
 mbcache
 mc
 mei
