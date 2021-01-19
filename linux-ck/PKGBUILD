@@ -94,25 +94,25 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 b2sums=(
-        # Kernel source (.tar.xz)
+        # Kernel source (linux-X.XX.X.tar.xz)
         '1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
-        # Kernel source signature
+        # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
-        # Kernel configuration
-        '94c7944c0ab82b6f653dd1df554540babf538197e76f3f92132c3f1ae7f43d9f3d917846fe762114803ceeee7ac5ad93346cc17cb06801897ec84ff60f6939b6'
-        # Enable additional CPU optimizations patch
+        # Kernel configuration (config)
+        'f0ef1f34d2dde277542882605f4e3f145fd25e6cf38374e4168bbf1f162be9178da28424aa8514ce77a882c3bc774b2f48387b82dc77a5493ed5bc4cbc093fec'
+        # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
-        # CK patchset
+        # CK patchset (patch-X.XX-ck1.xz)
         '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
-        # 0001-Zen-Add-sysctl[...] patch
+        # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         'b42730a806a63dbf905f448a3282dec72a950ef7d16a3531d977dcae3b5c2685a5c5dd10a58e345d57084a6212353dc2f2f0102021d13c1557092e564f81eaf5'
-        # 0002-HID-quirks-Add-Apple[...] patch
+        # 0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
         'a5dea5bb6df6fb517009ad5b104c2ea8e93ed880393a1412ca2d7fc8047abccc9c72076e40d1d4133cadc9048040846cc9bdc91e30c4d601ad5963d13498503e'
-        # 0003-iwlwifi-Fix-regression[...] patch
+        # 0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
         '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
-        # modprobed.db (module database)
+        # module database (modprobed.db)
         '3e52ade633ffb1db3211aaa2058173482e1546fcc9ad66cd25ff56d6a9b1106fa185b8a578f4b753b146205dfc42bddb4e2d2055326eaaf8ee7178db2d1f5984'
-        # configuration modifier (apply custom optimizations)
+        # configuration modifier (tune-config)
         'a64c5bf94808cacf23ff6a4c16ba460b0f64034a1270f53de37b9889ace4731e509e9c5b2dff36040daa199a8ff70e22498166cf18efe828418b01783fa19194'
 )
 
