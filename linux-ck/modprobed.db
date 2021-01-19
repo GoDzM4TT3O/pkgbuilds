@@ -118,7 +118,6 @@ trusted
 usb_storage
 usbhid
 uvcvideo
-v4l2loopback
 vfat
 video
 videobuf2_common
@@ -126,8 +125,6 @@ videobuf2_memops
 videobuf2_v4l2
 videobuf2_vmalloc
 videodev
-vmmon
-vmnet
 vmw_vmci
 vmw_vsock_virtio_transport_common
 vmw_vsock_vmci_transport

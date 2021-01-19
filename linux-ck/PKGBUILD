@@ -99,7 +99,7 @@ b2sums=(
         # Kernel source signature
         'SKIP'
         # Kernel configuration
-        'f0ef1f34d2dde277542882605f4e3f145fd25e6cf38374e4168bbf1f162be9178da28424aa8514ce77a882c3bc774b2f48387b82dc77a5493ed5bc4cbc093fec'
+        '94c7944c0ab82b6f653dd1df554540babf538197e76f3f92132c3f1ae7f43d9f3d917846fe762114803ceeee7ac5ad93346cc17cb06801897ec84ff60f6939b6'
         # Enable additional CPU optimizations patch
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         # CK patchset
@@ -111,7 +111,7 @@ b2sums=(
         # 0003-iwlwifi-Fix-regression[...] patch
         '9a8723104239ba4646dd0c76c5a60128892954dd2faee69ca5c5d1251c9694de8fd528ca063a2add1401ad1375ad0dcc2560ca03a1bfd03b161d34ccd25b686a'
         # modprobed.db (module database)
-        '05497f85e8b4c058b81126c70438d10674ab97dc3f2a2a09e6e37db2dae9ccdd3d1d0c4b6b078284a34b7eee3c9a185223670d795884b0f5fedbca43fc5984d7'
+        '3e52ade633ffb1db3211aaa2058173482e1546fcc9ad66cd25ff56d6a9b1106fa185b8a578f4b753b146205dfc42bddb4e2d2055326eaaf8ee7178db2d1f5984'
         # configuration modifier (apply custom optimizations)
         'a64c5bf94808cacf23ff6a4c16ba460b0f64034a1270f53de37b9889ace4731e509e9c5b2dff36040daa199a8ff70e22498166cf18efe828418b01783fa19194'
 )
