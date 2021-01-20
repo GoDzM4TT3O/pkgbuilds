@@ -1,5 +1,5 @@
---- ../linux-ck-upstream/PKGBUILD	2021-01-18 08:23:20.176667797 +0100
-+++ PKGBUILD	2021-01-19 09:23:35.626681272 +0100
+--- a/PKGBUILD	2021-01-20 08:12:45.133051278 +0100
++++ b/PKGBUILD	2021-01-20 08:15:38.514634925 +0100
 @@ -1,5 +1,6 @@
  # Maintainer: graysky <graysky AT archlinux DOT us>
  # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
@@ -37,10 +37,10 @@
    'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
    '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
  )
--b2sums=('1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
+-b2sums=('faedb4032fd709d3f0089d706232ec0dcfdf3817223aa910112e6cd58bffea20a3127fee407a465fa3b4db1a54050fabd839809c404492820216fadae70885b9'
 +b2sums=(
 +        # Kernel source (linux-X.XX.X.tar.xz)
-+        '1bea3293bb036639d5dd72aba9ca078e1cf94c3752d48abd6462c65038ca5808ee976919623ccb64356756b2cc766a014e57483e8e1418a089236522a0e0a56e'
++        'faedb4032fd709d3f0089d706232ec0dcfdf3817223aa910112e6cd58bffea20a3127fee407a465fa3b4db1a54050fabd839809c404492820216fadae70885b9'
 +        # Kernel source signature (linux-X.XX.X.tar.sign)
          'SKIP'
 -        '37df0c9fc2214da9e94f0fb38ddc9c1f5bcf6279cacf918166efc3a0a8a9433ee10a95232992a108944160cf020fc3c240ef2fb8023581dc9cac11f973d7985d'
