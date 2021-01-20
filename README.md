@@ -4,7 +4,7 @@
 
 For more PKGBUILDs, visit [my website](https://godzm4tt3o.js.org/aur.html).
 
-Currently available PKGBUILDs:
-- [x] St
-- [x] Surf
-- [x] Custom [Linux-Ck](https://godzm4tt3o.js.org/ck.html)
++ Currently available PKGBUILDs:
+	- Custom [Linux-Ck](https://godzm4tt3o.js.org/ck.html)
+	- St
+	- Surf
