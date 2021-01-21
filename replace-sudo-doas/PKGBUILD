@@ -1,0 +1,16 @@
+# Maintainer: Salonia Matteo <saloniamatteo@protonmail.com> 
+# Replace sudo with doas.
+
+pkgname=replace-sudo-doas
+pkgver=1.0
+pkgrel=1
+pkgdesc="Replace sudo with doas"
+arch=('any')
+license=('GPL3')
+depends=('opendoas' 'coreutils')
+conflicts=('sudo')
+
+package() {
+	# Create a symbolic link from doas to sudo, verbosely
+	doas ln -sfv $(which doas) /usr/bin/sudo
+}
