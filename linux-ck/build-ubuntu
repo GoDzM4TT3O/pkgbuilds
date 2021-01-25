@@ -2,9 +2,9 @@
 # this is an alternative script, targeted towards debian/ubuntu
 
 # set local variables
-pkgver="5.10.9"
+pkgver="5.10.10"
 pkgbase="linux-ck"
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 _ckpatch="patch-5.10-ck${_ckpatchversion}"
 _gcc_more_v='20201113'
@@ -61,29 +61,30 @@ _makenconfig=
 _subarch=32
 
 # install the required packages
-sudo apt-get install git build-essential bc kmod libelf-dev cpio perl tar xz-utils wget kernel-package fakeroot libssl-dev
+sudo apt-get install git build-essential bc kmod libelf-dev cpio perl tar xz-utils wget kernel-package fakeroot libssl-dev flex bison
 
 # use directory /usr/share/linux/linux-ck-$pkgver
-sudo mkdir -p /usr/share/linux/linux-ck-$pkgver
+kerneldir="/usr/share/linux/linux-ck-$pkgver"
+sudo mkdir -p $kerneldir
 # change ownership to current user
-sudo chown $(whoami):$(whoami) /usr/share/linux/linux-ck-$pkgver
+sudo chown $(whoami):$(whoami) -R $kerneldir
 # get inside the newly created directory
-cd /usr/share/linux/linux-ck-$pkgver
+cd $kerneldir
 
-# get the latest kernel image
-wget "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
+# get the latest kernel image if it doesn't exist
+[ -f "linux-$pkgver.tar.xz" ] || wget "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
 
-# use gcc optimizations
-wget "https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" -O "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz"
+# use gcc optimizations (download them if they don't exist)
+[ -f "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz" ] || wget "https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" -O "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz"
 
-# get the ck patchset
-wget "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
+# get the ck patchset if it doesn't exist
+[ -f "$_ckpatch.xz" ] || wget "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
 
 # untar the kernel archive
 tar xf linux-$pkgver.tar.xz
 
 # extract the ck patchset 
-xz -d $_ckpatch-$_ckpatchversion
+xd -d $_ckpatch.xz
 
 # extract the gcc optimizations archive
 tar xf "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz"
@@ -97,10 +98,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 git clone "https://github.com/godzm4tt3o/pkgbuilds"
 
 # copy patches to kernel folder
-cp pkgbuilds/linux-ck/000[1-3]*.patch linux.$pkgver
+cp pkgbuilds/linux-ck/000[1-4]*.patch linux-$pkgver
 
 # enter the kernel folder
-cd linux-ck
+cd linux-$pkgver
 
 echo "Setting version..."
 scripts/setlocalversion --save-scmversion
@@ -108,7 +109,9 @@ echo "-$pkgrel" > localversion.10-pkgrel
 echo "${pkgbase#linux}" > localversion.20-pkgname
 
 # apply patches
-patch -Np1 < 000[1-3]*.patch
+for patch in $(ls | grep "patch"); do
+	patch -Np1 < $patch
+done
 
 # copy configuration to current folder
 echo "Setting config..."
@@ -143,11 +146,11 @@ scripts/config --disable CONFIG_KVM_WERROR
 sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
 # copy ck patchset to kernel folder
-cp ../$_ckpatch-$_ckpatchversion .
+cp ../$_ckpatch .
 
 # ck patchset itself
 echo "Patching with ck patchset..."
-patch -Np1 -i "$_ckpatch-$_ckpatchversion"
+patch -Np1 -i "$_ckpatch"
 
 # non-interactively apply ck1 default options
 # this isn't redundant if we want a clean selection of subarch below
@@ -191,23 +194,22 @@ echo "Prepared $pkgbase version $(<version)"
 [[ -z "$_makenconfig" ]] || make nconfig
 
 # save configuration for later reuse
-cat .config > "${startdir}/config.last"
+cat .config > "$kerneldir/linux-${pkgver}/config.last"
 
 # uncomment if you want to build with distcc
 ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
 
 # build the kernel, creating a debian package
-make clean
+make-kpkg clean
 # nproc is the number of available CPU processors
-make deb-pkg -j$(nproc)
+make-kpkg --initrd $pkgrel-$pkgbase $pkgrel-$pkgbase-headers -j$(nproc)
 
 # enable Ubuntu splash screen before boot
 echo vesafb | sudo tee -a /etc/initramfs-tools/modules
 echo fbcon | sudo tee -a /etc/initramfs-tools/modules
 
 # install the generated packages with dpkg
-sudo dpkg-i $pkgbase-$pkgver-$pkgrel_$CPUTYPE.deb
-sudo dpkg-i $pkgbase-headers-$pkgver-$pkgrel_$CPUTYPE.deb
+sudo dpkg -i *.deb
 
 # create the initramfs
 # (it should automatically be generated)
