@@ -84,7 +84,7 @@ cd $kerneldir
 tar xf linux-$pkgver.tar.xz
 
 # extract the ck patchset 
-xd -d $_ckpatch.xz
+xz -d $_ckpatch.xz
 
 # extract the gcc optimizations archive
 tar xf "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz"
