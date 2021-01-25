@@ -72,7 +72,7 @@ sudo chown $(whoami):$(whoami) -R $kerneldir
 cd $kerneldir
 
 # get the latest kernel image if it doesn't exist
-[ -f "linux-$pkgver.tar.xz" ] || wget "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
+[ -f "linux-$pkgver.tar.xz" ] || wget "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
 
 # use gcc optimizations (download them if they don't exist)
 [ -f "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz" ] || wget "https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz" -O "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz"
