@@ -203,9 +203,9 @@ cat .config > "$kerneldir/linux-${pkgver}/config.last"
 ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
 
 # build the kernel, creating a debian package
-make-kpkg clean
+make clean
 # nproc is the number of available CPU processors
-fakeroot make-kpkg -j$(nproc) --initrd --append-to-version="${pkgbase#linux}" binary
+make -j$(nproc) deb-pkg
 
 # enable Ubuntu splash screen before boot
 echo vesafb | sudo tee -a /etc/initramfs-tools/modules
