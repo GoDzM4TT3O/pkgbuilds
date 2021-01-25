@@ -205,14 +205,14 @@ cat .config > "$kerneldir/linux-${pkgver}/config.last"
 # build the kernel, creating a debian package
 make clean
 # nproc is the number of available CPU processors
-make -j$(nproc) deb-pkg
+fakeroot make-kpkg --initrd --append-to-version="${pkgbase#linux}" kernel_image kernel_headers -j$(nproc)
 
 # enable Ubuntu splash screen before boot
 echo vesafb | sudo tee -a /etc/initramfs-tools/modules
 echo fbcon | sudo tee -a /etc/initramfs-tools/modules
 
 # install the generated packages with dpkg
-sudo dpkg -i *.deb
+sudo dpkg -i ../*.deb
 
 # create the initramfs
 # (it should automatically be generated)
