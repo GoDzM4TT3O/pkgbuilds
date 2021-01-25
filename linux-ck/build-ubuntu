@@ -115,7 +115,7 @@ done
 
 # copy configuration to current folder
 echo "Setting config..."
-cp ../pkgbuilds/linux-ck/config .config
+cp $kerneldir/pkgbuilds/linux-ck/config .config
 
 # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
 # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
@@ -140,13 +140,13 @@ scripts/config --disable CONFIG_SCHED_DEBUG
 scripts/config --disable CONFIG_KVM_WERROR
 
 # apply optimizations
-../pkgbuilds/linux-ck/tune-config
+$kerneldir/pkgbuilds/linux-ck/tune-config
 
 # fix naming schema in EXTRAVERSION of ck patch set
 sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
 
 # copy ck patchset to kernel folder
-cp ../$_ckpatch .
+cp $kerneldir/$_ckpatch .
 
 # ck patchset itself
 echo "Patching with ck patchset..."
@@ -157,7 +157,7 @@ patch -Np1 -i "$_ckpatch"
 make olddefconfig
 
 # copy GCC optimizations patch to kernel folder
-cp "../kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch" .
+cp "$kerneldir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch" .
 
 # https://github.com/graysky2/kernel_gcc_patch
 # make sure to apply after olddefconfig to allow the next section
