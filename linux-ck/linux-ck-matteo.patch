@@ -1,5 +1,6 @@
---- ../../aur/linux-ck-upstream/PKGBUILD	2021-02-01 11:06:18.354808034 +0100
-+++ PKGBUILD	2021-02-01 09:30:19.774337439 +0100
+Linux-Ck version 5.10.12-3
+--- a/PKGBUILD	2021-02-01 11:06:18.354808034 +0100
++++ b/PKGBUILD	2021-02-01 09:30:19.774337439 +0100
 @@ -1,5 +1,6 @@
  # Maintainer: graysky <graysky AT archlinux DOT us>
  # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
