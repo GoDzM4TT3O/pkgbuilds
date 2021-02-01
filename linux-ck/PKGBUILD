@@ -66,8 +66,8 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.11
-pkgrel=1
+pkgver=5.10.12
+pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -86,7 +86,7 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
   0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-  0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch
+  0004-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
   "modprobed.db"
   "tune-config"
 )
@@ -96,11 +96,11 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        'f2ffb77efeab44e5ac74f275f1c728618a0893c752018946a3908a34dca2797982efb6646df1350f31c9cab2b780aca871dff82b63e2ec59e3bfcdafa0457581'
+        'f5e16e92c9543708997d9dfee28feb2cd6e6909a33dc7f97c40b507a8d03bd72717b1af84bed3fa25b2a167652d8cd93b66d145d484e5ad292af24b3bf64a649'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
-        '78f36713cbac4f4abfea6474e7ae3bf7fe95b1c3cb43c3990f966c138a567021686d6364505a277423c9f19d36e7ec1497010e0da4e5f915b2c80159d15a97f4'
+        '3f82d02edde8c354590bf86708089183283478df7065124d4a7e0c646914c530abdb5040bed2728a9e106a6ef2d45e89dc79bdcca99e179ed12ede98a8346d98'
         # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         # CK patchset (patch-X.XX-ck1.xz)
@@ -111,8 +111,8 @@ b2sums=(
         '9450bd3d4acfa94723eaf22f2c0a13ae3bdb1ceb15ad19d1a1de2fc8d9a7b9b8f759006fd5b4286da135c68bac75791b4bf767ece8b6c40aff95799296ee0327'
         # 0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
         'ea8e11fa3e9ccffe26366c2c279e11ffd4cb7ed0500028afef083188d46a0df2487800417914e63b8ac101b6a28b6a61aad91bea0b7a0305d64be3445a4f68a0'
-        # 0004-HID-wacom-Correct-NULL-dereference-on-AES-pen-proxim.patch
-        'b57086457843e75899772ec37a469f524d7f5df5a1ba27ab35a97b478ed37b8deb29371db3f69b33ec10eaf38fd554cef0da7c64c451b11db84e4dc497f8bae9'
+        # 0004-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
+        '4a40db184421fdda2b01efe22adee7a4e1ce82cbc877bfaea5aaaae7215d1fe9aeb307a5241af6b7b9e539ae3d1a26f35adaedce82c61d3edb60f6e0d1673743'
         # module database (modprobed.db)
         '3e52ade633ffb1db3211aaa2058173482e1546fcc9ad66cd25ff56d6a9b1106fa185b8a578f4b753b146205dfc42bddb4e2d2055326eaaf8ee7178db2d1f5984'
         # configuration modifier (tune-config)
