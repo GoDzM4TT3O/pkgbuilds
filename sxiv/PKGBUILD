@@ -1,0 +1,47 @@
+# Maintainer: Salonia Matteo <saloniamatteo@protonmail.com>
+
+pkgname=sxiv
+pkgver=26
+pkgrel=1
+pkgdesc='Simple X Image Viewer'
+url='https://github.com/muennich/sxiv'
+arch=('any')
+license=('GPL2')
+depends=('imlib2' 'libxft' 'freetype2' 'fontconfig' 'giflib' 'hicolor-icon-theme')
+
+source=(
+	"https://github.com/muennich/sxiv/archive/v26.tar.gz"
+	"sxiv-matteo.patch" # patch
+)
+
+sha256sums=(
+	'SKIP' # git repo
+	'9e3326c6b1f102f1256acc437ad932539c5ad0516e6ab2aa3b0c65bc3d4e36ad' # patch
+)
+
+provides=('sxiv')
+conflicts=('sxiv-git')
+
+prepare() {
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Apply patch
+  cp "${srcdir}"/sxiv-matteo.patch .
+  patch -i sxiv-matteo.patch
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Add GIF support
+  export CFLAGS="$CFLAGS $CPPFLAGS -lgif"
+  make PREFIX="/usr"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make PREFIX="/usr" DESTDIR="$pkgdir" install
+  make -C icon PREFIX="/usr" DESTDIR="$pkgdir" install
+  install -Dm644 sxiv.desktop "$pkgdir/usr/share/applications/${pkgname}.desktop"
+}
