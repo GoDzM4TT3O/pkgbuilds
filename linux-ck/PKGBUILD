@@ -66,7 +66,7 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.12
+pkgver=5.10.13
 pkgrel=3
 _ckpatchversion=1
 arch=(x86_64)
@@ -85,8 +85,7 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-  0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-  0004-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
+  0003-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
   "modprobed.db"
   "tune-config"
 )
@@ -96,11 +95,11 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        'f5e16e92c9543708997d9dfee28feb2cd6e6909a33dc7f97c40b507a8d03bd72717b1af84bed3fa25b2a167652d8cd93b66d145d484e5ad292af24b3bf64a649'
+        'f2d6f5512c10ced0990d0d0cbc1aa29e5b54b90bff01f16d16093e9c192de9eb0f31e60c9dd51c686ce88c2a1d89a49bedb503af61c91a6a186794fbe71eedde'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
-        '3f82d02edde8c354590bf86708089183283478df7065124d4a7e0c646914c530abdb5040bed2728a9e106a6ef2d45e89dc79bdcca99e179ed12ede98a8346d98'
+        '7547c9c7b11f16bedf2dd5c6e22fc6129879f32e6dd9e1e74aa3095585e9415c4e6e67d05d3f7e04e253656b6ad7a5f8ea708136184874160434b59a41ccb130'
         # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         # CK patchset (patch-X.XX-ck1.xz)
@@ -109,9 +108,7 @@ b2sums=(
         'de81e92b92ba697e472d6397faa425ebcc09bede6c97008dcae47efd341d2eaa12ec72209c4cc97155df01358e1fce3a86d3f0b5441ac91615037de72105defc'
         # 0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
         '9450bd3d4acfa94723eaf22f2c0a13ae3bdb1ceb15ad19d1a1de2fc8d9a7b9b8f759006fd5b4286da135c68bac75791b4bf767ece8b6c40aff95799296ee0327'
-        # 0003-iwlwifi-Fix-regression-from-UDP-segmentation-support.patch
-        'ea8e11fa3e9ccffe26366c2c279e11ffd4cb7ed0500028afef083188d46a0df2487800417914e63b8ac101b6a28b6a61aad91bea0b7a0305d64be3445a4f68a0'
-        # 0004-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
+        # 0003-Revert-SUNRPC-Handle-TCP-socket-sends-with-kernel_se.patch
         '2486a3ff1307e8d0d5876b401b4358867563b1b3a6c92ebe12e7b1d08636891f1fae79b4ee89a228b2932c4c418cb4a4b5a1bb32d3522508a40617c7a7a7aff6'
         # module database (modprobed.db)
         '3e52ade633ffb1db3211aaa2058173482e1546fcc9ad66cd25ff56d6a9b1106fa185b8a578f4b753b146205dfc42bddb4e2d2055326eaaf8ee7178db2d1f5984'
