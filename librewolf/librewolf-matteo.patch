@@ -1,0 +1,229 @@
+Apply this patch to LibreWolf version 85.0.1
+to apply Matteo Salonia's modifications
+--- a/PKGBUILD	2021-02-07 18:17:43.897755766 +0100
++++ b/PKGBUILD	2021-02-07 18:22:40.830995210 +0100
+@@ -1,3 +1,4 @@
++# Modified by Salonia Matteo <saloniamatteo@pm.me>
+ # Maintainer: lsf
+ # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+ # Contributor: Ionut Biru <ibiru@archlinux.org>
+@@ -24,39 +25,71 @@
+ options=(!emptydirs !makeflags !strip)
+ _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
+ _settings_commit=3feb12464aa81df2f4ff162fce69890614c0ac8f
+-source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+-               $pkgname.desktop
+-               "git+https://gitlab.com/${pkgname}-community/browser/common.git"
+-               "git+https://gitlab.com/${pkgname}-community/settings.git"
+-               "megabar.patch"
+-               "remove_addons.patch"
+-               "unity-menubar.patch")
+-source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+-                $pkgname.desktop
+-                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
+-                "git+https://gitlab.com/${pkgname}-community/settings.git"
+-                "megabar.patch"
+-                "remove_addons.patch"
+-                "unity-menubar.patch"
+-                arm.patch
+-                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
+-
+-sha256sums_x86_64=('e98f586aa4d58e7418da41a2d19cd30030d072f86edd24a3fd6f769284287cee'
+-                   '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+-                   'SKIP'
+-                   'SKIP'
+-                   '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
+-                   'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+-                   'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665')
+-sha256sums_aarch64=('e98f586aa4d58e7418da41a2d19cd30030d072f86edd24a3fd6f769284287cee'
+-                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+-                    'SKIP'
+-                    'SKIP'
+-                    '682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
+-                    'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
+-                    'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
+-                    '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
+-                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
++source_x86_64=(
++	"https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz"
++	$pkgname.desktop
++	"git+https://gitlab.com/${pkgname}-community/browser/common.git"
++	"git+https://gitlab.com/${pkgname}-community/settings.git"
++	"megabar.patch"
++	"remove_addons.patch"
++	"unity-menubar.patch"
++	"remove-search-engines.patch"
++)
++
++source_aarch64=(
++	"https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz"
++	$pkgname.desktop
++	"git+https://gitlab.com/${pkgname}-community/browser/common.git"
++	"git+https://gitlab.com/${pkgname}-community/settings.git"
++	"megabar.patch"
++	"remove_addons.patch"
++	"unity-menubar.patch"
++	arm.patch
++	https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
++	"remove-search-engines.patch"
++)
++
++sha256sums_x86_64=(
++	# Firefox source code
++	'e98f586aa4d58e7418da41a2d19cd30030d072f86edd24a3fd6f769284287cee'
++	# librewolf.desktop
++	'0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
++	# LibreWolf Common Files (repo)
++	'SKIP'
++	# LibreWolf Settings (repo)
++	'SKIP'
++	# megabar.patch
++	'682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
++	# remove_addons.patch
++	'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
++	# unity-menubar.patch
++	'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
++	# remove-search-engines.patch
++	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
++)
++
++sha256sums_aarch64=(
++	# Firefox source code
++	'5f03712642f5e77de4581d2ba3ee3e87cfa44c3d2fdd8fe0fb56ea05a57f7b50'
++	# librewolf.desktop
++	'0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
++	# LibreWolf Common Files (repo)
++	'SKIP'
++	# LibreWolf Common Files (repo)
++	'SKIP'
++	# megabar.patch
++	'682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5'
++	# remove_addons.patch
++	'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
++	# unity-menubar.patch
++	'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
++	# arm.patch
++	'6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
++	# build-arm-libopus.patch
++	'2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
++	# remove-search-engines.patch
++	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
++)
+ 
+ prepare() {
+   mkdir mozbuild
+@@ -104,10 +137,14 @@
+ mk_add_options MOZ_TELEMETRY_REPORTING=0
+ 
+ # options for ci / weaker build systems
+-# mk_add_options MOZ_MAKE_FLAGS="-j4"
+-# ac_add_options --enable-linker=gold
++mk_add_options MOZ_MAKE_FLAGS="-j2"
++ac_add_options --enable-linker=gold
+ END
+ 
++# NOTE: I uncommented "mk_add_options and ac_add_options above."
++# mk_add_options MOZ_MAKE_FLAGS="-j2": use 2 CPU cores for compilation
++# ac_add_options --enable-linker=gold: use the "gold" linker for faster compilation
++
+ if [[ $CARCH == 'aarch64' ]]; then
+   cat >>../mozconfig <<END
+ # taken from manjaro build:
+@@ -122,8 +159,7 @@
+   export CXXFLAGS+=" -g0"
+   export RUSTFLAGS="-Cdebuginfo=0"
+ 
+-  # we should have more than enough RAM on the CI spot instances.
+-  # export LDFLAGS+=" -Wl,--no-keep-memory"
++  export LDFLAGS+=" ,-Wl,--no-keep-memory"
+   patch -p1 -i ../arm.patch
+   patch -p1 -i ../build-arm-libopus.patch
+ 
+@@ -147,7 +183,7 @@
+   # also disabled for the default build, as it seems to cause issues in some configurations
+   # patch -p1 -i ../unity-menubar.patch
+ 
+-  # Disabling Pocket
++  # Disable Pocket
+   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
+   # this one only to remove an annoying error message:
+   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+@@ -170,6 +206,57 @@
+   sed "$_settings_services_sed" -i services/settings/Utils.jsm
+   sed "$_settings_services_sed" -i toolkit/components/search/SearchUtils.jsm
+ 
++  # START OF MODIFICATIONS BY Salonia Matteo
++
++  # NOTE: "lockPref" was changed to "defaultPref" so that it can be changed if needed,
++  # without having to recompile LibreWolf.
++  echo "Applying custom patches..."
++
++  # enable "dom.webaudio.enabled" and "media.peerconnection.enabled", to fix Meet
++  sed -i "s/lockPref(\"dom.webaudio.enabled\", false);/defaultPref(\"dom.webaudio.enabled\", true);/" ../settings/librewolf.cfg
++  sed -i "s/defaultPref(\"media.peerconnection.enabled\", false);/defaultPref(\"media.peerconnection.enabled\", true);/" ../settings/librewolf.cfg
++
++  # enable devtools dark theme
++  sed -i "s/\/\/lockPref(\"devtools.theme\", \"dark\");/lockPref(\"devtools.theme\", \"dark\");/" ../settings/librewolf.cfg
++
++  # only send "scheme+host+port" in the referer 
++  sed -i "s/lockPref(\"network.http.referer.trimmingPolicy\", 0);/lockPref(\"network.http.referer.trimmingPolicy\", 2);/" ../settings/librewolf.cfg
++
++  # enable CTRL+C, CTRL+V detection
++  sed -i "s/lockPref(\"dom.event.clipboardevents.enabled\", false);/defaultPref(\"dom.event.clipboardevents.enabled\", true);/" ../settings/librewolf.cfg
++
++  # enable webcam
++  sed -i "s/defaultPref(\"media.navigator.video.enabled\", false);/defaultPref(\"media.navigator.video.enabled\", true);/" ../settings/librewolf.cfg
++
++  # enable HTTP pipelining (faster speeds)
++  cat >>../settings/librewolf.cfg <<END
++
++// Custom settings
++
++// Make internet faster (send/receive multiple files at once)
++defaultPref("network.http.pipelining", true);
++
++// Total number of pipelines
++defaultPref("network.http.pipelining.max-optimistic-requests", 8);
++
++// Enable HTTPS pipelines
++defaultPref("network.http.pipelining.ssl", true);
++END
++
++  # remove unnecessary search engines
++  # DuckDuckGo Lite, Startpage, Jive Search,
++  # Qwant, MetaGer
++  # The only 2 search engines left are DDG and Searx
++  cp ../remove-search-engines.patch ../settings/distribution
++  cd ../settings/distribution
++  patch -p1 -i remove-search-engines.patch && echo "Succesfully removed unnecessary search engines! "
++
++  # commit changes
++  cd .. && git add librewolf.cfg && git commit -m "Customize librewolf.cfg" && cd ../firefox-$pkgver
++  echo "Done applying custom patches! "
++
++  # END OF MODIFICATIONS BY Salonia Matteo
++
+   rm -f ${srcdir}/common/source_files/mozconfig
+   cp -r ${srcdir}/common/source_files/* ./
+ }
+@@ -187,8 +274,8 @@
+ 
+   # -fno-plt with cross-LTO causes obscure LLVM errors
+   # LLVM ERROR: Function Import: link error
+-  # CFLAGS="${CFLAGS/-fno-plt/}"
+-  # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
++  CFLAGS="${CFLAGS/-fno-plt/}"
++  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+ 
+   # Do 3-tier PGO
+   echo "Building instrumented browser..."
+@@ -276,7 +363,8 @@
+ END
+ 
+   cd ${srcdir}/settings
+-  git checkout ${_settings_commit}
++  # avoid losing changes
++  # git checkout ${_settings_commit}
+   cd ${srcdir}/firefox-$pkgver
+   cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
+ 
