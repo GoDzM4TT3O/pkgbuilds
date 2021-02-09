@@ -16,7 +16,7 @@ source=(
 
 sha256sums=(
 	'SKIP' # git repo
-	'9e3326c6b1f102f1256acc437ad932539c5ad0516e6ab2aa3b0c65bc3d4e36ad' # patch
+	'163b381818f975ca7a82cfeea243f768aeb2001ec83a027d79bcd105df200351' # patch
 )
 
 provides=('sxiv')
