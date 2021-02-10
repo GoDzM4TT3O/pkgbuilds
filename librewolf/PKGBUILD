@@ -227,6 +227,9 @@ fi
   # enable webcam
   sed -i "s/defaultPref(\"media.navigator.video.enabled\", false);/defaultPref(\"media.navigator.video.enabled\", true);/" ../settings/librewolf.cfg
 
+  # enable screen sharing
+  sed -i "s/defaultPref(\"media.getusermedia.screensharing.enabled\", false)/defaultPref(\"media.getusermedia.screensharing.enabled\", true)/" ../settings/librewolf.cfg
+
   # enable HTTP pipelining (faster speeds)
   cat >>../settings/librewolf.cfg <<END
 
