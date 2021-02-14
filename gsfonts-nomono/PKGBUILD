@@ -1,0 +1,39 @@
+# Modified by Salonia Matteo <saloniamatteo@pm.me>
+# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Firmicus <francois.archlinux.org>
+# Contributor: dorphell <dorphell@archlinux.org>
+
+pkgname=gsfonts-nomono
+_pkgname=gsfonts
+pkgver=20200910
+pkgrel=1
+pkgdesc='(URW)++ Core Font Set [Level 2]'
+url='https://github.com/ArtifexSoftware/urw-base35-fonts'
+arch=('any')
+license=('AGPL3')
+makedepends=('git')
+source=("git+https://github.com/ArtifexSoftware/urw-base35-fonts#tag=$pkgver")
+sha256sums=('SKIP')
+provides=('gsfonts')
+conflicts=('gsfonts')
+
+package() {
+	cd urw-base35-fonts
+	install -Dt "${pkgdir}/usr/share/fonts/${_pkgname}" -m644 fonts/*.otf
+	install -Dt "${pkgdir}/usr/share/metainfo" -m644 appstream/*.xml
+
+	install -d "${pkgdir}"/etc/fonts/conf.{avail,d}
+	for _f in fontconfig/*.conf; do
+		_fn="${pkgdir}/etc/fonts/conf.avail/69-${_f##*/}"
+		install -m644 ${_f} "${_fn}"
+		ln -srt "${pkgdir}/etc/fonts/conf.d" "${_fn}"
+	done
+
+	# Check if we need to use doas or sudo
+	#[ $(which doas) ] && root="doas" || root="sudo"
+
+	# Remove problematic Nimbus Mono font
+	cd "${pkgdir}/usr/share/fonts/${_pkgname}"
+	#$root rm -v NimbusMono*
+	rm -v NimbusMono*
+}
