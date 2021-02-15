@@ -34,6 +34,7 @@ source_x86_64=(
 	"rust_build_fix.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/rust_build_fix.patch"
 	"megabar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/megabar.patch"
 	"remove_addons.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/remove_addons.patch"
+	"unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
 	"context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
 	"remove-search-engines.patch"
 )
