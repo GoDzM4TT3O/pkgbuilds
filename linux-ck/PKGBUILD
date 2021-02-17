@@ -98,7 +98,7 @@ b2sums=(
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
-        '7547c9c7b11f16bedf2dd5c6e22fc6129879f32e6dd9e1e74aa3095585e9415c4e6e67d05d3f7e04e253656b6ad7a5f8ea708136184874160434b59a41ccb130'
+        '7438524a9cd2a79ccc96506e8128bbf91f7e2cb93b0c2faeea1d54c4fbd11857988fe0ca2a90bf3d1b90a27bc6456fd2cd5d2911aba07ed3a07cd7b065af8dba'
         # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         # CK patchset (patch-X.XX-ck1.xz)
