@@ -66,8 +66,8 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.10.17
-pkgrel=1
+pkgver=5.11
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -76,15 +76,17 @@ makedepends=(
   bc kmod libelf        cpio perl tar xz
 )
 options=('!strip')
-_ckpatch="patch-5.10-ck${_ckpatchversion}"
+_ckpatch="patch-5.11-ck${_ckpatchversion}"
 _gcc_more_v='20201113'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.10/5.10-ck${_ckpatchversion}/$_ckpatch.xz"
+  "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
+  0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch
+  0003-Revert-drm-amd-display-reuse-current-context-instead.patch
+  0004-drm-amdgpu-fix-shutdown-with-s0ix.patch
   "modprobed.db"
   "tune-config"
 )
@@ -94,19 +96,23 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        '7317e13e6262adf6d69f1192370be8eb2a31054a3626cf20e3e42d4f794f1f1767495c85cc891853a647c246828de31915090706fcdc514c7c563dbd5bbae4bf'
+        '81300c27bd5476387a83123aaeb4163c73eb61e9245806c23660cb5e6a4fa88ffc9def027031335fa0270fc4080506cd415990014364e3a98b9d2e8c58a29524'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
-        '2a976606b20d4d41133345b0638e902907b06c18e06338a930bdf14aa5b7cfb03a6f49c967ad7f2d2a948a900678cdf8e70a93eeb095cfbf2bfee06ef43178f7'
+        '5de8a4991ebab542a4eff98ad78c018808855e5552cf9deed5f603a696b44f693dc9c185073684f3591a65a256407ad31cbbec040d06b20112648913cc4e3180'
         # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
         '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
         # CK patchset (patch-X.XX-ck1.xz)
-        '067f3389124fdd937ca69e9e9568b1b3194791960a093e81037051eb6d25e80b40bf7f60c61373ac9e92bff9db760766009b1e6f9ee8429a883bb7fce2d60f8a'
+        '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        '99474f274431a7491ffc1a2b7fd20aad76699c0a9b442b8ce3459bade402ec002e4b67a40e1cc8b802752add70ee6ce77cc8055b8f4c2d81adfcd001d8a2eb13'
-        # 0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_sp.patch
-        '3264190050a0cac1b63057c08dbcf07d351a370b08eccc70122e44a935e7e41f64fbb7444e986773266d69c3f6354d3c2e49282d6308dca4ec24a92dc93ff917'
+        'e1d11423a6d62fa566a651dc78fe1c5e297db96733ed15fc6d60d65dbb248a61548362e8693718d05cad2cdb5b89d38b283f99ed82367bcd9b81b34c16cbb8af'
+	# 0002-Bluetooth-btusb-Some-Qualcomm-Bluetooth-adapters-sto.patch
+        'f8cb61ae284cc4bc0c580fa95e227c9cceb57cc902dfd77e3f4d93937f414ec459570be370ec2ff363b7162ea7d8fe97e477badc08e419776944d559a3bd7ba9'
+	# 0003-Revert-drm-amd-display-reuse-current-context-instead.patch
+        '6dc36e16adee051089c3cebde655e5c2dac361d0886de58d2885750008bef368c5f89d6db21f7a277cf4cdb4f33a4d8eb078df818b512d96f796bf3a53e16b05'
+	# 0004-drm-amdgpu-fix-shutdown-with-s0ix.patch
+        'ce1688af6068288d37303c406a600e696147d5520017cd32456fd2b5f6df23951fcb01ebb7baf2f4bc307a3399514c46c6650f4dd9e22b9f09588f5c40484e65'
         # module database (modprobed.db)
         '3e52ade633ffb1db3211aaa2058173482e1546fcc9ad66cd25ff56d6a9b1106fa185b8a578f4b753b146205dfc42bddb4e2d2055326eaaf8ee7178db2d1f5984'
         # configuration modifier (tune-config)
