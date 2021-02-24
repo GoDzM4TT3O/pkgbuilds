@@ -66,8 +66,8 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11
-pkgrel=2
+pkgver=5.11.1
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -96,7 +96,7 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        '81300c27bd5476387a83123aaeb4163c73eb61e9245806c23660cb5e6a4fa88ffc9def027031335fa0270fc4080506cd415990014364e3a98b9d2e8c58a29524'
+        'a585aa07b5e577bddc8c54086900be6ef768ee71687bcafdb770eef40a3c5aa24ce40ca49d4231645ce3fa2787f8527f68cd5c9fb1f0947c511c759cba957471'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
