@@ -1,29 +1,19 @@
 # Maintainer: Salonia Matteo <saloniamatteo@protonmail.com>
 
 pkgname=st-matteo
-_pkgname=st-luke
-pkgver=0.8.2.r1166.13b3c63
+_pkgname=st
+pkgver=0.8.2.r3.69cb4df
 pkgrel=1
 pkgdesc='Simple virtual terminal emulator for X'
-url='https://github.com/LukeSmithxyz/st.git'
+url='https://github.com/saloniamatteo/st.git'
 arch=('i686' 'x86_64')
 license=('GPL3')
 options=('zipman')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-
-# include config.h and any patches you want to have applied here
-source=(
-	"${_pkgname}::git+$url" # git repo
-	"st-matteo.patch" # patch
-)
-sha256sums=(
-	'SKIP' # git repo
-	'1c67de735ec39bf8348cf59c9d46fbd5ab24b942263b35345261a0c5e62af4b9' # patch
-)
-
+source=("git+https://github.com/saloniamatteo/st")
+sha256sums=('SKIP')
 provides=('st')
-conflicts=('st')
 
 pkgver() {
   cd "${_pkgname}"
@@ -35,9 +25,6 @@ prepare() {
   cd "${_pkgname}"
   # skip terminfo which conflicts with ncurses
   sed -i '/tic /d' Makefile
-
-  # apply patch
-  patch < "${srcdir}"/"st-matteo.patch"
 }
 
 build() {
