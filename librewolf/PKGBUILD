@@ -66,7 +66,7 @@ sha256sums_x86_64=(
 	# remove_addons.patch
 	'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
 	# unity-menubar.patch
-	'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
+	'ac856cb21238f9dade5350df1f89254b1e592cb9aaed7745aacc3a750765c0e9'
 	# context-menu.patch
 	'3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
 	# remove-search-engines.patch
@@ -87,7 +87,7 @@ sha256sums_aarch64=(
 	# remove_addons.patch
 	'f2f7403c9abd33a7470a5861e247b488693cf8d7d55c506e7e579396b7bf11e6'
 	# unity-menubar.patch
-	'ee302586f5291f809759f5eae3e5bad60b13007d9a9d37ac7f397597eb1d8665'
+	'ac856cb21238f9dade5350df1f89254b1e592cb9aaed7745aacc3a750765c0e9'
 	# arm.patch
 	'6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
 	# build-arm-libopus.patch
