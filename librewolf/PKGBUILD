@@ -36,6 +36,7 @@ source_x86_64=(
 	"unity-menubar.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/unity-menubar.patch"
 	"context-menu.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/context-menu.patch"
 	"remove-search-engines.patch"
+	"libredns-doh.patch"
 )
 
 source_aarch64=(
@@ -50,6 +51,7 @@ source_aarch64=(
 	"arm.patch::https://gitlab.com/librewolf-community/browser/linux/-/raw/${_linux_commit}/arm.patch"
 	https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	"remove-search-engines.patch"
+	"libredns-doh.patch"
 )
 
 sha256sums_x86_64=(
@@ -71,6 +73,8 @@ sha256sums_x86_64=(
 	'3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
 	# remove-search-engines.patch
 	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
+	# libredns-doh.patch
+	'd9dcaaa67423bea1fad3bd9837dd1cb602ce5645520e993974e73640d1fb43c5'
 )
 
 sha256sums_aarch64=(
@@ -94,6 +98,8 @@ sha256sums_aarch64=(
 	'2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
 	# remove-search-engines.patch
 	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
+	# libredns-doh.patch
+	'd9dcaaa67423bea1fad3bd9837dd1cb602ce5645520e993974e73640d1fb43c5'
 )
 
 prepare() {
@@ -260,6 +266,11 @@ END
   cp ../remove-search-engines.patch ../settings/distribution
   cd ../settings/distribution
   patch -p1 -i remove-search-engines.patch && echo "Succesfully removed unnecessary search engines! "
+
+  # add LibreDNS as a DNS-over-HTTPS (DoH) provider
+  cp ../libredns-doh.patch ../src/firefox-${pkgver}
+  cd ../src/firefox-${pkgver}
+  patch -p2 -i libredns-doh.patch && echo "Succesfully added LibreDNS as DoH provider! "
 
   # commit changes
   cd .. && git add librewolf.cfg && git commit -m "Customize librewolf.cfg" && cd ../firefox-$pkgver
