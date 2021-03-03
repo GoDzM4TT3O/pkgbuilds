@@ -74,7 +74,7 @@ sha256sums_x86_64=(
 	# remove-search-engines.patch
 	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
 	# libredns-doh.patch
-	'd9dcaaa67423bea1fad3bd9837dd1cb602ce5645520e993974e73640d1fb43c5'
+	'ebfc5c00769951aca1b0e1674dc44c74ee57452154ed99471ccf13aa47a8235a'
 )
 
 sha256sums_aarch64=(
@@ -99,7 +99,7 @@ sha256sums_aarch64=(
 	# remove-search-engines.patch
 	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
 	# libredns-doh.patch
-	'd9dcaaa67423bea1fad3bd9837dd1cb602ce5645520e993974e73640d1fb43c5'
+	'ebfc5c00769951aca1b0e1674dc44c74ee57452154ed99471ccf13aa47a8235a'
 )
 
 prepare() {
@@ -267,14 +267,13 @@ END
   cd ../settings/distribution
   patch -p1 -i remove-search-engines.patch && echo "Succesfully removed unnecessary search engines! "
 
-  # add LibreDNS as a DNS-over-HTTPS (DoH) provider
-  cp ../libredns-doh.patch ../src/firefox-${pkgver}
-  cd ../src/firefox-${pkgver}
-  patch -p2 -i libredns-doh.patch && echo "Succesfully added LibreDNS as DoH provider! "
-
   # commit changes
-  cd .. && git add librewolf.cfg && git commit -m "Customize librewolf.cfg" && cd ../firefox-$pkgver
+  cd .. && git add librewolf.cfg && git commit -m "Customize librewolf.cfg" && cd ../firefox-${pkgver}
   echo "Done applying custom patches! "
+
+  # add LibreDNS as a DNS-over-HTTPS (DoH) provider
+  cp ../../libredns-doh.patch .
+  patch -p3 -i libredns-doh.patch && echo "Succesfully added LibreDNS as DoH provider! "
 
   # END OF MODIFICATIONS Made by Salonia Matteo
 
