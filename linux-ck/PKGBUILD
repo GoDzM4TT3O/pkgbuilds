@@ -66,7 +66,7 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.2
+pkgver=5.11.3
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -84,8 +84,6 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Revert-drm-amd-display-reuse-current-context-instead.patch
-  0003-drm-amdgpu-fix-shutdown-with-s0ix.patch
   "modprobed.db"
   "tune-config"
 )
@@ -95,7 +93,7 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        '62f47c769998fa713cda9024a4ecbe7ba2140acde629082630c2c0b076b4e941b0a1e82f7d2b7cd4ed6e84759ea93de78e212ecbe1341d9055091d26d83286dc'
+        '9451bda48221ea58096682a4ce107194580a6fcaccb15d62b881c2ba8eddadbd46b010b20e2fa8e723674de0d29dd0a12749c9245db39b521659bc6cf2f270c5'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
@@ -106,10 +104,6 @@ b2sums=(
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         '59c8f4d66eeeb5b3f84b17ab81431804ac9334e97cdbf99ff3dd77803ee3af55908d3d3ba0e957093418a7c5805e423ac78dd398ffb64ba6577aa69bfb9cfbe1'
-	# 0002-Revert-drm-amd-display-reuse-current-context-instead.patch
-        '190bf21b37dacf735cd2f91b465757be70ca4016108dbd80a2edd9fa8dd6a0a3c18edea3c044624414af4e85b15f1031468b935d2f9e800e94cc338d7bc33ee7'
-	# 0003-drm-amdgpu-fix-shutdown-with-s0ix.patch
-        '51681ca2a0cd97d65710093f1fa917048f270eda815fcc3ffa0b8cb5068a8e6cb1faa57267d31ce687e0dc2a74eb589c87924166a8cf028c6e2c63303426fd03'
         # module database (modprobed.db)
         '3e52ade633ffb1db3211aaa2058173482e1546fcc9ad66cd25ff56d6a9b1106fa185b8a578f4b753b146205dfc42bddb4e2d2055326eaaf8ee7178db2d1f5984'
         # configuration modifier (tune-config)
