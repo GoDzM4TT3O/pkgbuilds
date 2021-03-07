@@ -48,7 +48,10 @@ _makenconfig=
 #  30. Intel Cooper Lake (MCOOPERLAKE)
 #  31. Intel Tiger Lake (MTIGERLAKE)
 #  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Native optimizations autodetected by GCC (MNATIVE)
+#  33. Generic-x86-64-v2 (GENERIC_CPU2) (NEW)
+#  34. Generic-x86-64-v3 (GENERIC_CPU3) (NEW)
+#  35. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
+#  36. Native optimizations autodetected by GCC (MNATIVE) (NEW)
 
 # Haswell
 _subarch=23
@@ -67,7 +70,7 @@ _subarch=23
 
 pkgbase=linux-ck
 pkgver=5.11.3
-pkgrel=1
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -77,7 +80,7 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.11-ck${_ckpatchversion}"
-_gcc_more_v='20201113'
+_gcc_more_v=20210306
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
@@ -99,7 +102,7 @@ b2sums=(
         # Kernel configuration (config)
         '5de8a4991ebab542a4eff98ad78c018808855e5552cf9deed5f603a696b44f693dc9c185073684f3591a65a256407ad31cbbec040d06b20112648913cc4e3180'
         # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
-        '7f1eb5938472f57748216bd00e0c875feab99fc1c5cb89babfea467ee30ca5c8e9fc5a691efe2e602bef1ea79820c5383822d7cec354b48d23321ccda8ee8127'
+        '378c0b006aac679456f285b1e3c84eeed5480cb1560c8fbd08b0b0f83f02ae7c6b32c3ebb807f0336b77951f69df486ae2d8ef5a2308b4712002f5f6d2169f9e'
         # CK patchset (patch-X.XX-ck1.xz)
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
