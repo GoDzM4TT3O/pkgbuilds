@@ -66,8 +66,8 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.4
-pkgrel=2
+pkgver=5.11.6
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -77,11 +77,11 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.11-ck${_ckpatchversion}"
-_gcc_more_v=20210308
+_gcc_more_v=20210309
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   "modprobed.db"
@@ -93,13 +93,13 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        '6d1cf5f10442c3d7c849f89d27eb92704d1b5c0b449d1ab8b332a373387a0f9cdf971c1ab0d83b3c911aad18c097908bd73c7c478da238da7b6396a434df7816'
+        'c94885a274c835ce13e109aed4307831a1e57283c2e475dca1fc9c3c0cce97ad599e485b0413dabd182c5d48f9e5e30d071c3f9dcd0d6954e1affe0014279024'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
         '46cd8af983fcdce11260991dfe123cabc8fa8aa10fe4064a36e334811ebf7ae20b566e60b40d48fbcfb0187144cb11807bc4b27ef2f53fff0e43fad05e44ecc8'
-        # Enable additional CPU optimizations patch (enable_additional_cpu_optimizations-YYYYMMDD.tar.gz)
-        '8fb2ccecc11fbf024e443c0adc1aef764aee69b222041501959e3f29be8ea9bc2d017c040a5844974e6b59f8a14c020f7dda5d29a30039f5d4465affba15fe71'
+        # More GCC optimizations (more-uarches-YYYYMMDD.tar.gz)
+        '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
         # CK patchset (patch-X.XX-ck1.xz)
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
@@ -173,7 +173,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/more-uarches-for-gcc-v10-and-kernel-5.8+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
