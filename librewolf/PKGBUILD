@@ -70,7 +70,7 @@ sha256sums_x86_64=(
 	# context-menu.patch
 	'3bc57d97ef58c5e80f6099b0e82dab23a4404de04710529d8a8dd0eaa079afcd'
 	# unity-menubar.patch
-	'8a673eb894ea9658fdb63715df75bb8c2d9d7577600b6a5186e1456e4e7b0b00'
+	'8a673eb894ea9658fdb63715df75bb8c2d9d7577600b6a5186e1456e4e7b0b00  '
 	# remove-search-engines.patch
 	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
 	# libredns-doh.patch
@@ -95,7 +95,7 @@ sha256sums_aarch64=(
 	# build-arm-libopus.patch
 	'2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
 	# unity-menubar.patch
-	'8a673eb894ea9658fdb63715df75bb8c2d9d7577600b6a5186e1456e4e7b0b00'
+	'8a673eb894ea9658fdb63715df75bb8c2d9d7577600b6a5186e1456e4e7b0b00  '
 	# remove-search-engines.patch
 	'612f7c2ab8793f8f9a49b78d03177e426be59271975de7bc1fe19b3431b2a2c1'
 	# libredns-doh.patch
