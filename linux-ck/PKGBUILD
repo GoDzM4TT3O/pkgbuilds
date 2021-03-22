@@ -104,7 +104,7 @@ b2sums=(
         # CK patchset (patch-X.XX-ck1.xz)
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        'c22463da6e78830e104f728c00cf43573a7e1a59c17234f49844b9295eab953f4e119d34a0621feb816b9f1f0469dd769884f9ed1740c73176625435ea0a8624'
+        'e87cffb1c63f8ea887941435f62edb869f0317523153ae7933b78003a79cc5885987663d9a91fecf287cb402c03a524ba1727b0011c8ae926f0aed2d3a79b086'
         # 0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
         '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32'
         # module database (modprobed.db)
