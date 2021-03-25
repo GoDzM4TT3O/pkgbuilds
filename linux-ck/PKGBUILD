@@ -66,8 +66,8 @@ _subarch=23
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.8
-pkgrel=2
+pkgver=5.11.10
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -94,7 +94,7 @@ validpgpkeys=(
 )
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        '48028845215ba4514735575b2cf0f9bd67c224168074c406d01188ab28483ab139d6fab42dda6be10b04c9716e7be91fc6f5e4bbd58984bea40b7e7cff60e477'
+        '84b97aeb190d570144d0e315edf8c0b51fd92a70f94a30f08ef49a65eedd48ee135b2c2f3a1a2827ace96fef2d1963e83948790c7729f3d7c1f615f8d32c9656'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
@@ -213,7 +213,7 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make all -j$(nproc)
+  make all -j4
 }
 
 _package() {
