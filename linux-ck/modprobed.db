@@ -5,6 +5,7 @@ agpgart
 at24
 atkbd
 battery
+bridge
 cbc
 ccm
 cdc_acm
