@@ -1185,7 +1185,7 @@ CONFIG_NFT_REJECT_NETDEV=m
 # CONFIG_NF_LOG_ARP is not set
 # CONFIG_NF_LOG_IPV4 is not set
 # CONFIG_NF_REJECT_IPV4 is not set
-# CONFIG_IP_NF_IPTABLES is not set
+CONFIG_IP_NF_IPTABLES=m
 # CONFIG_IP_NF_ARPTABLES is not set
 # end of IP: Netfilter Configuration
 
@@ -1197,7 +1197,7 @@ CONFIG_NFT_REJECT_NETDEV=m
 # CONFIG_NF_DUP_IPV6 is not set
 # CONFIG_NF_REJECT_IPV6 is not set
 # CONFIG_NF_LOG_IPV6 is not set
-# CONFIG_IP6_NF_IPTABLES is not set
+CONFIG_IP6_NF_IPTABLES=m
 # end of IPv6: Netfilter Configuration
 
 # CONFIG_BPFILTER is not set
