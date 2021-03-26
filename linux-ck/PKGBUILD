@@ -98,7 +98,7 @@ b2sums=(
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
-        '5d66eaa4b8aeda03405658ed2e5a060651135bfb5aebfea07b8dc4f6137c4a0490cf999459d724c75148de1fa9ac725fedc4f81a42a16bee4750375948c9c363'
+        'ffaa2ab2aa22489157f101ce2055f705f6259e8a6673cc2cefd9a0ad78528be82a55d44506b380482484b64dec53886945c8db2eb382d47b3b72aac723422995'
         # More GCC optimizations (more-uarches-YYYYMMDD.tar.gz)
         '04351f264bf9ec12b5acdc13546531f38b6fee9f2eca55eb7aec28dbff6a45a5e29a0603d52b4a7dc89ed86e401fb18625ef8d91073ff4732e1d03a135339413'
         # CK patchset (patch-X.XX-ck1.xz)
@@ -108,7 +108,7 @@ b2sums=(
         # 0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
         '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32'
         # module database (modprobed.db)
-        '316a8784e1d78a82736b373861f5d217a65516f9e99c1a2803946eb734417f25320ff25260d152266c37f63e71f70c80efeec7455e23b45c94c21d1ff21d22e5'
+        '40a812b24784fa7742d8f871fb6a639c24e0a9185276b81ec450ab14211fc635ae10d89bf70b46fbdd7fef4507c9a6941f81e8214ee54e80838be780d89f0129'
         # configuration modifier (tune-config)
         'a789f3e75b0d03a00b5465f0dc480436d99bdb0421024b77976c0fb3da144d139090e57e7e557091b98371b201ceffc12d010d3c1c90ea2d5c3528ca63960ba2'
 )
