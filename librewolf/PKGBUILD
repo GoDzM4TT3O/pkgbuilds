@@ -145,12 +145,12 @@ mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
 
 # options for ci / weaker build systems
-mk_add_options MOZ_MAKE_FLAGS="-j2"
+mk_add_options MOZ_MAKE_FLAGS="-j4"
 ac_add_options --enable-linker=gold
 END
 
 # NOTE: I uncommented "mk_add_options and ac_add_options above."
-# mk_add_options MOZ_MAKE_FLAGS="-j2": use 2 CPU cores for compilation
+# mk_add_options MOZ_MAKE_FLAGS="-j4": use 4 CPU cores for compilation
 # ac_add_options --enable-linker=gold: use the "gold" linker for faster compilation
 
 if [[ $CARCH == 'aarch64' ]]; then
