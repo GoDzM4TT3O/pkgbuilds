@@ -115,6 +115,7 @@ sysimgblt
 thinkpad_acpi
 tpm
 trusted
+tun
 usb_storage
 usbhid
 uvcvideo
