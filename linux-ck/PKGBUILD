@@ -108,7 +108,7 @@ b2sums=(
         # 0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
         '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32'
         # module database (modprobed.db)
-        '40a812b24784fa7742d8f871fb6a639c24e0a9185276b81ec450ab14211fc635ae10d89bf70b46fbdd7fef4507c9a6941f81e8214ee54e80838be780d89f0129'
+        'b3ed4a257b2c1c323e9d8401bb356f4adeeebde823364bbd70182e6de0fd0ae3794fc24393eaec1b5880f58e0d18fb9f96957bfa0c035c41403be25f1bec27e6'
         # configuration modifier (tune-config)
         'a789f3e75b0d03a00b5465f0dc480436d99bdb0421024b77976c0fb3da144d139090e57e7e557091b98371b201ceffc12d010d3c1c90ea2d5c3528ca63960ba2'
 )
@@ -340,5 +340,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
