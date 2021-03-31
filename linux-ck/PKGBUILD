@@ -86,7 +86,6 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
   "modprobed.db"
-  "tune-config"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -109,8 +108,6 @@ b2sums=(
         '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32'
         # module database (modprobed.db)
 	'ece4631417f2b2ba56c0d18c95a2d31df07d0a7931308d4ebd2a9d9ac185fff24fe4b2ff2e937148c59606995c3502b8bf07559ed28b7593536ede8db200c0b3'
-        # configuration modifier (tune-config)
-        'a789f3e75b0d03a00b5465f0dc480436d99bdb0421024b77976c0fb3da144d139090e57e7e557091b98371b201ceffc12d010d3c1c90ea2d5c3528ca63960ba2'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -158,9 +155,6 @@ prepare() {
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
-
-  # apply optimizations
-  ../tune-config
 
   # fix naming schema in EXTRAVERSION of ck patch set
   sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
