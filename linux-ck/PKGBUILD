@@ -57,17 +57,14 @@ _makenconfig=
 #  33. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL)
 #  34. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD)
 
-# Haswell
-#_subarch=23
-
 # Intel-Native optimizations
 _subarch=33
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.11
-pkgrel=4
+pkgver=5.11.13
+pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -77,35 +74,34 @@ makedepends=(
 )
 options=('!strip')
 _ckpatch="patch-5.11-ck${_ckpatchversion}"
-_gcc_more_v=20210327
+_gcc_more_v=20210402
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
   "modprobed.db"
 )
+
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
+
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        'e82eca6aee8e983304d363f6b427784df593f1fa8c2e7c54b0c6317e9a59497d4398dcec60a0e1ef7efd1f964e1c55a8ee2e3fb1fbf238a87917b30fc049f30b'
+        'fd9537a0eb265660ed25d12ff4098ca208035576c580f81cb6a1355eedde2748bdb65521641f68e626a1aee49e7494c79627015a376b7ee4a6373622605ac760'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
-	'7c2e5a940a3de248ef51e30d499b2b32a0a2ec6777bb7cd6fae27858b1a5bf5fc8946422dba0e68ca878c81defe2121ccccc53a4c51a922839088c579d68d7a5'
+	'1d88fe9e0e059479fd54b443ac938532d5b2e4c837f7bb45892400edc72fd16061a6173aac3a1c7d16b662cab1f6b871421a36258fe720feb61633e6c6550ad7'
         # More GCC optimizations (more-uarches-YYYYMMDD.tar.gz)
-        'f9a5de8af8ea693a21a824e3805c6d784d17ab72828000966a53ed46e66edce53a447271985634137e42901e41c4ac49d3f91e9262896668a335cea8ee896a7c'
+        'b8c3ba685a7fa34f8b047467a41e2e78702c41e54469934515c7d2f221411b2357a7378b86edaf2ca7ce1a3f9b627878438ab1cfcdae4fc681f47021d9a813d9'
         # CK patchset (patch-X.XX-ck1.xz)
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-        'e87cffb1c63f8ea887941435f62edb869f0317523153ae7933b78003a79cc5885987663d9a91fecf287cb402c03a524ba1727b0011c8ae926f0aed2d3a79b086'
-        # 0002-iommu-amd-Don-t-initialise-remapping-irqdomain-if-IO.patch
-        '917b32c49ed6d96fcbcbe661e0232ff720f9e317e5e1e884152e937f46a00877f9b44584ef3cd8804bcf6d1626886f3a2edc1eb84f605c71a0f0cdfa6c3d4e32'
+	'd1d7ef3b2f84f60ce7dea832bff4d79d633605413960c071c5a27abe4bbb372050d83a22eab94611f69ba4771ca97d66d775abed2703c51771011e9356db67da'
         # module database (modprobed.db)
 	'ece4631417f2b2ba56c0d18c95a2d31df07d0a7931308d4ebd2a9d9ac185fff24fe4b2ff2e937148c59606995c3502b8bf07559ed28b7593536ede8db200c0b3'
 )
@@ -119,7 +115,7 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?id=265115
 
   if [[ ! -f "$srcdir/$_ckpatch" ]]; then
-    unlink "$srcdir/$_ckpatch.xz"
+    #unlink "$srcdir/$_ckpatch.xz"
     xz -dc "$SRCDEST/$_ckpatch.xz" > "$_ckpatch"
   fi
 
