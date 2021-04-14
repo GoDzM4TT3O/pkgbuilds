@@ -63,7 +63,7 @@ _subarch=33
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.11.13
+pkgver=5.11.14
 pkgrel=2
 _ckpatchversion=1
 arch=(x86_64)
@@ -81,6 +81,10 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   "http://ck.kolivas.org/patches/5.0/5.11/5.11-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
+  0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
+  0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
+  0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch
   "modprobed.db"
 )
 
@@ -91,7 +95,7 @@ validpgpkeys=(
 
 b2sums=(
         # Kernel source (linux-X.XX.X.tar.xz)
-        'fd9537a0eb265660ed25d12ff4098ca208035576c580f81cb6a1355eedde2748bdb65521641f68e626a1aee49e7494c79627015a376b7ee4a6373622605ac760'
+        'bc7a8872d38975e727f71e7b73bf6624c1e2b146997a5a84dcc0754fb66209f9e8e64fb4ca0903ba664997c0d701f32e109a94dad96dd3dc50cc85d1c119ea2b'
         # Kernel source signature (linux-X.XX.X.tar.sign)
         'SKIP'
         # Kernel configuration (config)
@@ -101,7 +105,15 @@ b2sums=(
         # CK patchset (patch-X.XX-ck1.xz)
         '81d948aef4423255ebb4fa9b12c96207af8d14e225cf95d631dfbb1c0e88d31f60f81c2aff63046a78d8daf2601270ebb1d9cfaeccc3e3fdb08dbc430b53aff5'
         # 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	'd1d7ef3b2f84f60ce7dea832bff4d79d633605413960c071c5a27abe4bbb372050d83a22eab94611f69ba4771ca97d66d775abed2703c51771011e9356db67da'
+        '15e0c083bfdbf3ea1be551c948a1afe0ef3fdca490d331922fa6c0f3d6b269245e05119ed181741fca79bf248c42148f9acd21553361161897c8d389486901e8'
+	# 0002-drm-i915-ilk-glk-Fix-link-training-on-links-with-LTT.patch
+        'd6cd7b98d835599181c6a200ebecfd6d21a86ea0477fd4294289402ade6b79c75eee85066b87aebec1e372f634388ad209be48f260df622f6e7361c90afc2422'
+	# 0003-drm-i915-dp-Prevent-setting-the-LTTPR-LT-mode-if-no-.patch
+        '4970a378fa1d65015b1ee7c266248f8b79c5f91c1f66aae0e253747d296988f229ef0cff72482a68dff34606f2e08d21a565832b2833c17c4d80b8e4c6c72498'
+	# 0004-drm-i915-Disable-LTTPR-support-when-the-DPCD-rev-1.4.patch
+        'd98f4674ecf8b2107fa590e8be7484c08c7967679bd78f43a93fdb0a96766ca9a1d8eb24990c5510fb91f5a816e35ad2a8e4856395ee43654b2d0b1f793ec7c5'
+	# 0005-drm-i915-Fix-modesetting-in-case-of-unexpected-AUX-t.patch
+        '202aa8deca61f9b7e7098069624473ac6835735aaab27af501dd0ca72ca19c87958cfb9d71348b90e2965be9077cb1a9ce9991161fb0254c478f9316e5f5d878'
         # module database (modprobed.db)
 	'ece4631417f2b2ba56c0d18c95a2d31df07d0a7931308d4ebd2a9d9ac185fff24fe4b2ff2e937148c59606995c3502b8bf07559ed28b7593536ede8db200c0b3'
 )
