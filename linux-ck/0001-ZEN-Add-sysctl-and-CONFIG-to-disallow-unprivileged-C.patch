@@ -39,7 +39,7 @@ diff --git a/init/Kconfig b/init/Kconfig
 index a3d27421de8f..7e27f080d186 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1172,6 +1172,22 @@ config USER_NS
+@@ -1171,6 +1171,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -151,3 +151,4 @@ index af612945a4d0..95c54dae4aa1 100644
  
 -- 
 2.31.1
+
